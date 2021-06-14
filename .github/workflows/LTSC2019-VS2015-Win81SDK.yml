@@ -1,5 +1,4 @@
-name: WindowsServerCoreLTSC2019-VS2015
-
+name: LTSC2019-VS2015-Win81SDK
 
 on:
   push:
@@ -29,7 +28,8 @@ jobs:
           registry: ghcr.io
           username: yatima1460
           password: ${{ secrets.GITHUB_TOKEN }}
-      - run: docker build . --file WindowsServerCoreLTSC2019/VS2015.Dockerfile --tag yatima1460/windowsservercoreltsc2019:vs2015 --tag ghcr.io/yatima1460/windowsservercoreltsc2019:vs2015
-      - run: docker push yatima1460/windowsservercoreltsc2019:vs2015
-      - run: docker push ghcr.io/yatima1460/windowsservercoreltsc2019:vs2015
+      - run: docker build . --file WindowsServerCoreLTSC2019/VS2015-Win8.1SDK.Dockerfile --tag yatima1460/windowsservercoreltsc2019:vs2015-win8.1sdk --tag ghcr.io/yatima1460/windowsservercoreltsc2019:vs2015-win8.1sdk
+      - run: docker push yatima1460/windowsservercoreltsc2019:vs2015-win8.1sdk
+      - run: docker push ghcr.io/yatima1460/windowsservercoreltsc2019:vs2015-win8.1sdk
+
 
