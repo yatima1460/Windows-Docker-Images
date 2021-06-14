@@ -4,6 +4,9 @@
 |-|
 [![LTSC2019-VS2015](https://github.com/yatima1460/Windows-Docker-Images/actions/workflows/LTSC2019-VS2015.yml/badge.svg)](https://github.com/yatima1460/Windows-Docker-Images/actions/workflows/LTSC2019-VS2015.yml)
 [![LTSC2019-VS2015-Win81SDK](https://github.com/yatima1460/Windows-Docker-Images/actions/workflows/LTSC2019-VS2015-Win81SDK.yml/badge.svg)](https://github.com/yatima1460/Windows-Docker-Images/actions/workflows/LTSC2019-VS2015-Win81SDK.yml)
+[![20H2-VS2015](https://github.com/yatima1460/Windows-Docker-Images/actions/workflows/20H2-VS2015.yml/badge.svg)](https://github.com/yatima1460/Windows-Docker-Images/actions/workflows/20H2-VS2015.yml)
+[![20H2-VS2015-Win81SDK](https://github.com/yatima1460/Windows-Docker-Images/actions/workflows/20H2-VS2015-Win81SDK.yml/badge.svg)](https://github.com/yatima1460/Windows-Docker-Images/actions/workflows/20H2-VS2015-Win81SDK.yml)
+
 
 Collection of useful Windows Docker Images
 
