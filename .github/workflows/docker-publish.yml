@@ -24,7 +24,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
-      - name: Build the Docker image
+      - name: Build the base 2015 Docker image
+        run: docker build . --file WindowsServerCoreLTSC2019-VS2015.Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/windowsservercoreltsc2019:vs2015
+      - name: Build the Win8.1SDK 2015 Docker image
         run: docker build . --file WindowsServerCoreLTSC2019-VS2015-Win8.1SDK.Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/windowsservercoreltsc2019:vs2015-win8.1sdk
-      - name: Push to Docker Hub
+      - name: Push 2015 to Docker Hub
+        run: docker push ${{secrets.DOCKER_USERNAME}}/windowsservercoreltsc2019:vs2015
+      - name: Push 2015 Win8.1SDK to Docker Hub
         run: docker push ${{secrets.DOCKER_USERNAME}}/windowsservercoreltsc2019:vs2015-win8.1sdk
