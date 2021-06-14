@@ -1,4 +1,4 @@
-FROM yatima/windowsservercoreltsc2019:vs2015
+FROM yatima1460/windowsservercoreltsc2019:vs2015
 
 RUN powershell -Command \
         iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')); \
