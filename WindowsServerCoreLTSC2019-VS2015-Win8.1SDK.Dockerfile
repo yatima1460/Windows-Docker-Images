@@ -54,4 +54,5 @@ RUN MSBuild.exe /version
 # Image Metadata
 ######################################################
 
+# Run MSBuild version as default command
 CMD MSBuild.exe /version
