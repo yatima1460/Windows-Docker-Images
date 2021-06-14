@@ -1,5 +1,7 @@
 # Windows-Docker-Images
 
+[![docker build](https://github.com/yatima1460/Windows-Docker-Images/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/yatima1460/Windows-Docker-Images/actions/workflows/docker-publish.yml)
+
 Collection of useful Windows Docker Images
 
 # F.A.Q.
