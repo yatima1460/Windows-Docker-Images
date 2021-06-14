@@ -10,7 +10,7 @@ on:
 
 jobs:
 
-  windowsservercoreltsc2019-vs2015-win8.1sdk:
+  windowsservercoreltsc2019-vs2015-win81sdk:
     name: WindowsServerCoreLTSC-VS2015-Win8.1SDK
     runs-on: windows-2019
     steps:
