@@ -1,10 +1,15 @@
 name: Publish Docker image
+
+
 on:
   push:
-    branches: [master]
+    branches: [ master ]
   pull_request:
-    branches: [master]
+    branches: [ master ]
+
+
 jobs:
+
   windowsservercoreltsc2019-vs2015-win8.1sdk:
     name: WindowsServerCoreLTSC-VS2015-Win8.1SDK
     runs-on: windows-2019
