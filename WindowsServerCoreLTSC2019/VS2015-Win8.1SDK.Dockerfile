@@ -32,9 +32,6 @@ RUN curl -SL --output vs_buildtools.exe https://aka.ms/vs/16/release/vs_buildtoo
     # Cleanup                       
     && del /q vs_buildtools.exe         
 
-# Add MsBuild to PATH
-RUN setx path "%path%;\"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\""
-
 ######################################################
 # Post-Dependencies Checks
 ######################################################
