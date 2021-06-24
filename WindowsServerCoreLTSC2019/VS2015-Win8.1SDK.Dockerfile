@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
+FROM mcr.microsoft.com/dotnet/framework/sdk:3.5-windowsservercore-ltsc2019
 
 # We set cmd as default shell
 SHELL ["cmd", "/S", "/C"]
