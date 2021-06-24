@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
+FROM mcr.microsoft.com/dotnet/framework/sdk:3.5-windowsservercore-ltsc2019
 
 # We set cmd as default shell
 SHELL ["cmd", "/S", "/C"]
@@ -31,9 +31,6 @@ RUN curl -SL --output vs_buildtools.exe https://aka.ms/vs/16/release/vs_buildtoo
         || IF "%ERRORLEVEL%"=="3010" EXIT 0) \ 
     # Cleanup                       
     && del /q vs_buildtools.exe         
-
-# Add MsBuild to PATH
-RUN setx path "%path%;\"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\""
 
 ######################################################
 # Post-Dependencies Checks
