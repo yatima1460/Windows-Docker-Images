@@ -1,4 +1,4 @@
-name: 20H2-VS2015-Win81SDK
+name: windows_20h2_net35
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
 jobs:
 
   build:
-    runs-on: windows-latest
+    runs-on: windows-2019
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -28,7 +28,7 @@ jobs:
           registry: ghcr.io
           username: yatima1460
           password: ${{ secrets.GITHUB_TOKEN }}
-      - run: docker build . --file WindowsServerCore20H2-/VS2015-Win8.1SDK.Dockerfile --tag yatima1460/windowsservercore20h2:vs2015-win8.1sdk --tag ghcr.io/yatima1460/windowsservercore20h2:vs2015-win8.1sdk
+      - run: docker build --file windows_20h2_net35.Dockerfile --tag yatima1460/windows_20h2_net35 --tag ghcr.io/yatima1460/windows_20h2_net35
       - run: docker push yatima1460/windowsservercore20h2:vs2015-win8.1sdk
       - run: docker push ghcr.io/yatima1460/windowsservercore20h2:vs2015-win8.1sdk
 
