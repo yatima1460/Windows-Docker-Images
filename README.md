@@ -157,3 +157,26 @@ RUN choco install -y windows-sdk-8.1
 You need a bare metal instance
 
 https://aws.amazon.com/blogs/compute/running-hyper-v-on-amazon-ec2-bare-metal-instances/
+
+# I want to run a Windows container when a custom AWS AMI starts
+
+Something like
+
+```
+<powershell>
+docker run --rm imagename ...
+</powershell>
+```
+
+After setting up the userdata remember to run:
+
+`C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 –Schedule`
+
+
+before shutdown and before saving the AMI
+
+https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-user-data.html
+
+> :warning: Be careful of subnet gateways, you risk to mess up the route tables if you create the custom AMI in one subnet and then run it in another, the AMI will download the user data from a specific Amazon internal IP, as a rule of thumb just run it in the same subnet it was created if you don't want problems
+> https://aws.amazon.com/premiumsupport/knowledge-center/waiting-for-metadata/
+
