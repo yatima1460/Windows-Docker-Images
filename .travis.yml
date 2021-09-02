@@ -1,0 +1,14 @@
+language: shell
+
+services:
+  - docker
+
+os: windows
+
+
+jobs:
+  include:
+    - stage: Build VS2019-VCTools
+      script: docker build --tag yatima1460/windows:VS2019-VCTools --file VS2019-VCTools.Dockerfile Context
+    - stage: Build VS2019-VCTools-Choco-Python
+      script: docker build --tag yatima1460/windows:VS2019-VCTools-Choco-Python --file VS2019-VCTools-Choco-Python.Dockerfile Context
