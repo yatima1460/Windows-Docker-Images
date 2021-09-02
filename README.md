@@ -42,6 +42,10 @@ The linker gets crazy and dies because it uses some obscure Windows Kernel APIs 
 
 To prevent it:
 
+- Disable .pdb files creation
+
+or
+
 - Use Process Isolation
 
 or
@@ -95,7 +99,8 @@ This is confirmed to work with VS2017
 3. start compilation there
 4. then copy the artifacts to a read/write volume so they can be extracted from the container as artifacts
    
-> :warning: I have no idea if this works for VS2015, but works for VS2017
+> :warning: I have no idea if this works for VS2015
+> :heavy_check_mark: Seems to work well for VS2017
 
 **Patch B "layer":**
 1. bake the source code inside the container as a new Docker layer on top
@@ -111,7 +116,7 @@ This is confirmed to work with VS2017
 4. then copy the artifacts to a read/write volume so they can be extracted from the container as artifacts
 
 > :heavy_check_mark: Seems to work well for VS2015
-
+> :warning: I have no idea if this works for VS2017
 
 **advantage?**
 
