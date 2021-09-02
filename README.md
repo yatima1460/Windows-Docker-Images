@@ -151,3 +151,9 @@ Use choco, it's stable for that
 ```Dockerfile
 RUN choco install -y windows-sdk-8.1
 ```
+
+# When I try to use Hyper-V on AWS it doesn't work
+
+You need a bare metal instance
+
+https://aws.amazon.com/blogs/compute/running-hyper-v-on-amazon-ec2-bare-metal-instances/
