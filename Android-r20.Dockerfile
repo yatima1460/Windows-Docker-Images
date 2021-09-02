@@ -13,3 +13,8 @@ ENV ANDROID_NDK_DIR=C:\Android\android-ndk-r20
 
 RUN choco install -y android-sdk
 ENV ANDROID_SDK_DIR=C:\Android\android-sdk
+
+# Show container info at boot
+COPY Init.bat C:\Init.bat
+ENTRYPOINT [ "C:\\Init.bat", "&&"]
+CMD ["cmd"]
