@@ -88,7 +88,9 @@ both kernels have the API but Hyper-V does a bad communication between the two k
 **the effect?**
 
 when something tries to use that asynchronous writing file API the process will corrupt/crash
+
 how VS2019 fixed it?
+
 considering there is no Hyper-V patch (otherwise it wouldn't happen even with VS2015) my theory is that Microsoft just removed the usage of that API and used one that is also inside the internal container kernel
 
 
