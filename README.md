@@ -2,6 +2,14 @@
 
 Collection of useful Windows Docker Images
 
+| Image | Contains |
+|-|-|
+|VS2019-VCTools|Microsoft.VisualStudio.Workload.VCTools+Recommended|
+|VS2019-VCTools-Choco-Python|Microsoft.VisualStudio.Workload.VCTools+Recommended, Chocolatey, Python 3.9.0|
+|NET4.8-VS2019-VCTools|NET4.8 SDK, Microsoft.VisualStudio.Workload.VCTools+Recommended|
+|Choco|Chocolatey|
+|Android-r20|Android NDK r20, Android SDK 26.1.1|
+
 # F.A.Q.
 
 ## When installing some build tools I get error 2148734499 or 87
@@ -14,7 +22,18 @@ Something like this:
 
 Will work
 
-## LNK1318: Unexpected PDB error; RPC (23) '(0x000006E7)'
+## When using Hyper-V compiling is slow
+
+By default Hyper-V will run a VM with just 2 cores and 512MB of RAM
+
+Use `--cpus=%NUMBER_OF_PROCESSORS%` and `--memory=4GB` with `docker run`
+
+https://github.com/docker/for-win/issues/1877
+
+> :warning: when doing `docker build` you can only use `--memory`
+> https://github.com/moby/moby/issues/38387
+
+## VS2015 or VS2019 projects crashes, aka: `LNK1318: Unexpected PDB error; RPC (23) '(0x000006E7)'`
 
 Happens when using Hyper-V + host machine folder mounted inside using a bind volume
 
@@ -28,4 +47,83 @@ or
 
 - Don't mount host machine folders
 
+or
+
+- Mount a volume read only and copy the files
+
 https://github.com/docker/for-win/issues/829
+
+### In detail
+
+Ok so mspdbsrv.exe uses some type of kernel API/system call to let the linker CL.exe write the .pdb files in parallel when using multithreaded compilation /MT
+
+
+**context**
+
+Docker Windows containers by default run on Windows using actually a VM, so yeah, Docker is crap on Windows and just runs as a real VM running an entire kernel inside too
+(unlike Linux in which a Docker Linux container is actually just a process with less permissions)
+
+the Hyper-V hypervisor when mounting files inside the Docker VM needs to let communicate the internal kernel with the external one
+
+
+**the problem?**
+
+my theory is that Microsoft forgot the kernel API in the internal simplified VM kernel...
+
+OR
+
+both kernels have the API but Hyper-V does a bad communication between the two kernels
+
+
+**the effect?**
+
+when something tries to use that asynchronous writing file API the process will corrupt/crash
+how VS2019 fixed it?
+considering there is no Hyper-V patch (otherwise it wouldn't happen even with VS2015) my theory is that Microsoft just removed the usage of that API and used one that is also inside the internal container kernel
+
+
+**the fix?**
+
+*don't let mspdbsrv.exe write .pdb files inside a container volume that is actually a host directory mounted inside*
+
+This is confirmed to work with VS2017
+
+**Patch A "mirror":**
+1. mount the source code inside as a read-only volume
+2. copy it to a real container folder
+3. start compilation there
+4. then copy the artifacts to a read/write volume so they can be extracted from the container as artifacts
+   
+> :warning: I have no idea if this works for VS2015, but works for VS2017
+
+**Patch B "layer":**
+1. bake the source code inside the container as a new Docker layer on top
+2. start compilation
+3. then copy the artifacts to a read/write volume so they can be extracted from the container as artifacts
+
+> :warning: I have never tried this solution
+
+**Patch C "black magic":**
+1. add the source code inside the container as a new Docker layer on top
+2. actually start compilation not as a running container, but as an image creation process (docker build)
+3. run the container with read/write volume
+4. then copy the artifacts to a read/write volume so they can be extracted from the container as artifacts
+
+> :exclamation: Seems to work well for VS2015
+
+
+**advantage?**
+
+the stablest one, there are never possibly unstable Hyper-V volumes mounted when compiling
+
+
+**disadvantage?**
+
+max dual-core compilation
+
+
+## 'MSBuild' is not recognized as an internal or external command, operable program or batch file
+
+`call C:\BuildTools\VC\Auxiliary\Build\vcvarsall.bat <architecture>`
+
+Check the [vcvarsall documentation](https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=msvc-160#developer_command_file_locations)
