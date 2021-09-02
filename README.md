@@ -107,6 +107,7 @@ This is confirmed to work with VS2017
 4. then copy the artifacts to a read/write volume so they can be extracted from the container as artifacts
    
 > :warning: I have no idea if this works for VS2015
+
 > :heavy_check_mark: Seems to work well for VS2017
 
 **Patch B "layer":**
@@ -123,6 +124,7 @@ This is confirmed to work with VS2017
 4. then copy the artifacts to a read/write volume so they can be extracted from the container as artifacts
 
 > :heavy_check_mark: Seems to work well for VS2015
+
 > :warning: I have no idea if this works for VS2017
 
 **advantage?**
