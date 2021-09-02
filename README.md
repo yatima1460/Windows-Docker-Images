@@ -137,14 +137,14 @@ You need to initialize the msbuild environment
 
 Check the [vcvarsall documentation](https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=msvc-160#vcvarsall-syntax)
 
-# `Error response from daemon: hcsshim::CreateComputeSystem {container_guid}: The requested resource is in use.`
+## `Error response from daemon: hcsshim::CreateComputeSystem {container_guid}: The requested resource is in use.`
 
 1. Restart Hyper-V Compute Service
 2. Wait a bit
 3. Restart Docker
 
 
-# I need Windows 8.1 SDK how can I install it inside a container?
+## I need Windows 8.1 SDK how can I install it inside a container?
 
 Use choco, it's stable for that
 
@@ -152,13 +152,13 @@ Use choco, it's stable for that
 RUN choco install -y windows-sdk-8.1
 ```
 
-# When I try to use Hyper-V on AWS it doesn't work
+## When I try to use Hyper-V on AWS it doesn't work
 
 You need a bare metal instance
 
 https://aws.amazon.com/blogs/compute/running-hyper-v-on-amazon-ec2-bare-metal-instances/
 
-# I want to run a Windows container when a custom AWS AMI starts
+## I want to run a Windows container when a custom AWS AMI starts
 
 Something like
 
