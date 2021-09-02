@@ -10,6 +10,7 @@ Collection of useful Windows Docker Images
 |Choco|Chocolatey|
 |Android-r20|Android NDK r20, Android SDK 26.1.1|
 |UWP (TODO)|UWP for x86,x64,ARM|
+|XboxOne (TODO)|XboxOne SDK explanation on how to create an image given you already have the Microsoft files|
 
 # F.A.Q.
 
@@ -128,8 +129,25 @@ the stablest one, there are never possibly unstable Hyper-V volumes mounted when
 max dual-core compilation
 
 
-## 'MSBuild' is not recognized as an internal or external command, operable program or batch file
+## `'MSBuild' is not recognized as an internal or external command, operable program or batch file` OR VC Targets path cl.exe not found or similar errors
+
+You need to initialize the msbuild environment
 
 `call C:\BuildTools\VC\Auxiliary\Build\vcvarsall.bat <architecture>`
 
 Check the [vcvarsall documentation](https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=msvc-160#vcvarsall-syntax)
+
+# `Error response from daemon: hcsshim::CreateComputeSystem {container_guid}: The requested resource is in use.`
+
+1. Restart Hyper-V Compute Service
+2. Wait a bit
+3. Restart Docker
+
+
+# I need Windows 8.1 SDK how can I install it inside a container?
+
+Use choco, it's stable for that
+
+```Dockerfile
+RUN choco install -y windows-sdk-8.1
+```
