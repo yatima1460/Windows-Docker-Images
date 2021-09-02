@@ -12,7 +12,7 @@ RUN choco install -y android-ndk --version=20.0
 ENV ANDROID_NDK_DIR=C:\Android\android-ndk-r20
 
 RUN choco install -y android-sdk
-ENV ANDROID_SDK_DIR=C:\Android\android-sdk
+ENV ANDROID_SDK_DIR=C:\Android\android-sdk --version=26.1.1
 
 # Show container info at boot
 COPY Init.bat C:\Init.bat
