@@ -9,6 +9,7 @@ Collection of useful Windows Docker Images
 |NET4.8-VS2019-VCTools|NET4.8 SDK, Microsoft.VisualStudio.Workload.VCTools+Recommended|
 |Choco|Chocolatey|
 |Android-r20|Android NDK r20, Android SDK 26.1.1|
+|UWP (TODO)|UWP for x86,x64,ARM|
 
 # F.A.Q.
 
