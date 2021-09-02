@@ -110,7 +110,7 @@ This is confirmed to work with VS2017
 3. run the container with read/write volume
 4. then copy the artifacts to a read/write volume so they can be extracted from the container as artifacts
 
-> :exclamation: Seems to work well for VS2015
+> :heavy_check_mark: Seems to work well for VS2015
 
 
 **advantage?**
@@ -127,4 +127,4 @@ max dual-core compilation
 
 `call C:\BuildTools\VC\Auxiliary\Build\vcvarsall.bat <architecture>`
 
-Check the [vcvarsall documentation](https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=msvc-160#developer_command_file_locations)
+Check the [vcvarsall documentation](https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=msvc-160#vcvarsall-syntax)
