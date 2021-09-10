@@ -151,6 +151,9 @@ Check the [vcvarsall documentation](https://docs.microsoft.com/en-us/cpp/build/b
 2. Wait a bit
 3. Restart Docker
 
+## MSCOREE.lib is missing
+
+You need an image with the .NET SDK installed
 
 ## I need Windows 8.1 SDK how can I install it inside a container?
 
