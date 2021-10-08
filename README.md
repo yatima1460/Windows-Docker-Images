@@ -39,7 +39,7 @@ https://github.com/docker/for-win/issues/1877
 > :warning: when doing `docker build` you can only use `--memory`
 > https://github.com/moby/moby/issues/38387
 
-## 💥 VS2015 or VS2019 projects crashes, aka: `LNK1318: Unexpected PDB error; RPC (23) '(0x000006E7)'`
+## 💥 VS2015 or VS2017 projects crashes, aka: `LNK1318: Unexpected PDB error; RPC (23) '(0x000006E7)'`
 
 Happens when using Hyper-V + host machine folder mounted inside using a bind volume
 
